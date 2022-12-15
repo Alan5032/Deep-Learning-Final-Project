@@ -135,7 +135,48 @@
                                     through a ReLU layer. Guided backpropagation’s treatment of ReLU layers is closer to
                                     that of deconvolutions.
                                 </p>
-                                <p class='text-small'>INSERT TEXT HERE :)</p>
+                                <div class='inline-image'>
+                                    <img src='assets/images/methodology14.png' class='project image'>
+                                </div>
+                                <div class='inline-image'>
+                                    <img src='assets/images/methodology15.png' class='project image'>
+                                </div>
+                                <div class='inline-image'>
+                                    <img src='assets/images/methodology16.png' class='project image'>
+                                </div>
+                                <p><strong>Gradient to Saliency Map</strong></p>
+                                <p class='text-small'>
+                                    We used the method proposed by Simonyan et. al., which is to take the absolute value
+                                    of the gradient and flatten the channels by taking the max absolute value across
+                                    channels for each pixel. The absolute value is the magnitude of the gradient, or,
+                                    how important it is for the classification. We also explored not taking the absolute
+                                    value, but this resulted in masks with holes, as shown in the figures below. The
+                                    figures contain, from left to right: input image, saliency map, mask, masked image.
+                                    Detected class: “bird.”
+                                </p>
+                                <div class='inline-image'>
+                                    <img src='assets/images/methodology17.png' class='project image'>
+                                </div>
+                                <div class='inline-image'>
+                                    <img src='assets/images/methodology18.png' class='project image'>
+                                </div>
+                                <p><strong>Saliency Map to Segmentation Mask</strong></p>
+                                <p class='text-small'>
+                                    Using the saliency map of the given image, the program extracts pixels with an
+                                    intensity that is at the bottom 30% to and pixels at or above the top 90% to create
+                                    a background and foreground image respectively. Then by using the foreground image,
+                                    we iterate through the top 50 pixels with the highest saliency and recursively expand
+                                    outwards to pixels above a certain threshold in an attempt to create a mask.
+                                    This approach generated an inaccurate mask for some images and for others nothing
+                                    was generated. To fix this, we used a library that implemented the Graph Cut
+                                    algorithm to segment the image. This implementation of graph cut works by taking
+                                    the strokes of the seed image that mark foreground and background and perform a cut
+                                    on the image. The cut is performed by choosing the cut with the least cumulative weight,
+                                    where weight of an edge is based on the inverse squared difference between neighboring
+                                    pixels, such that pixels (pixels in the graph are represented by the nodes) with
+                                    large differences have low weight and vice versa. After the cuts are created, the
+                                    mask is output separating the foreground and background.
+                                </p>
                             </div>
                         </div>
                     </div>

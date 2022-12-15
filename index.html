@@ -112,6 +112,13 @@
                     <div class='experience card flex-horizontal' data-aos='fade'>
                         <div class='experience content flex-vertical'>
                             <div class='experience description'>
+                                <p><strong>Pipeline Summary</strong></p>
+                                <p class='text-small'>
+                                    1. Get detected classes with TResNet (multi-class classifier trained on COCO. Input: image. Output: probabilities for each class)
+                                    &emsp; a. Run the classification model forward on image to get class probabilities
+                                    &emsp; b. Get top k=20 most likely classes
+                                    &emsp; b. Filter for classes with probability > threshold=0.75
+                                </p>
                                 <p><strong>"Vanilla" Gradient Backpropagation</strong></p>
                                 <p class='text-small'>
                                     This method is called “vanilla” because the idea behind it is simple.

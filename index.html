@@ -336,20 +336,31 @@
                     <div class='experience card' data-aos='fade'>
                         <div class='experience description'>
                             <p class='text-small'>
-                                We use the VGGNet model architecture with weights pre-trained on ImageNet.
-                                We initialize the combined image to the content image, and pass the content image, style image, and combined image into the model.
-                                The model tunes the pixel values of the combined image until it represents a good combination of the content image and the style image.
+                                As shown in the evaluation images, we get mixed results for the IOU. Images with a single
+                                large object generally have high IOU, while images with many different objects or small
+                                objects tend to have lower IOU. We could have made our masks more precise by running the
+                                GraphCut algorithm on multiple scaled versions of the image to better capture small objects.
+                                We could also use some techniques to reduce noise.
                             </p>
                             <p class='text-small'>
-                                The model's loss function consists of a weighted sum of a style loss and content loss.
-                                The content loss is defined as the L1 distance between the output of the intermediate layers of the network for the content image and for the combined image.
-                                The style loss is defined as the L1 distance between Gram matrices computed on the output of the intermediate layers of the network for the style image and for the combined image.
-                                The Gram matrix we use measures the correlations between outputs of a specific layer.
+                                Sometimes saliency is highly concentrated on one area of an object, such as a person’s face or the tip of a fork
                             </p>
+                            <img src='assets/images/result1.png'>
+                            <img src='assets/images/result2.png'>
                             <p class='text-small'>
-                                Since the model's loss function consists of a weighted sum of the style loss and content loss,
-                                we experimented with a range of weights for the style and content losses, and found that the generated images looked best when the style loss weight dominated the content loss weight.
-                                In practice, we found that using a L1 loss function worked better than an L2 loss function, and produced combined images with more apparent influence from the style image.
+                                Guided backpropagation seems to do about the same or worse compared to vanilla gradient
+                                with our particular method of computing masks. This could be because zeroing out negatives
+                                in the backpropagation loses important information. It could also be that our method of
+                                computing the mask isn’t suited for guided backpropagation, since it tends to highlight
+                                edges. Other papers have instead used an edge detection algorithm to get the outlines of objects.
+                            </p>
+                            <img src='assets/images/result3.png'>
+                            <p class='text-small'>
+                                Figure: Vanilla gradient
+                            </p>
+                            <img src='assets/images/result4.png'>
+                            <p class='text-small'>
+                                Figure: Guided backpropagation
                             </p>
                         </div>
                     </div>

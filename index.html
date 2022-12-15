@@ -112,6 +112,29 @@
                     <div class='experience card flex-horizontal' data-aos='fade'>
                         <div class='experience content flex-vertical'>
                             <div class='experience description'>
+                                <p><strong>"Vanilla" Gradient Backpropagation</strong></p>
+                                <p class='text-small'>
+                                    This method is called “vanilla” because the idea behind it is simple.
+                                    Simonyan, et. al. proposed that if the gradient of a class’s probability with
+                                    regard to an input pixel is large, then that means changing the pixel would cause a
+                                    large change in the class’ probability, so it must be important for identifying that class.
+                                    Thus the absolute value of the gradient of a class’s probability with regard to all the
+                                    pixels in an image is a saliency map for that class. We can get this gradient easily using
+                                    PyTorch Autograd by calling backward() on the model output, which populates the gradient of
+                                    the output with regard to each layer, and then getting the gradient of the input image.
+                                </p>
+                                <p><strong>Guided Backpropagation</strong></p>
+                                <p class='text-small'>
+                                    Guided backpropagation aims to solve some of the shortcomings of the vanilla method,
+                                    where the saliency map is fuzzy and pixels that negatively correlate with the class
+                                    still have high saliency. We backpropagate the same way, except for a ReLU layer we
+                                    zero out gradient entries that are either negative or whose pixel was zeroed out in
+                                    the ReLU forward pass. Intuitively we want to zero out negative gradient pixels because
+                                    they negatively correlate with the output class. Simonyan, et. al. showed that vanilla
+                                    gradient backpropagation is equivalent to deconvolutions, except when backpropagating
+                                    through a ReLU layer. Guided backpropagation’s treatment of ReLU layers is closer to
+                                    that of deconvolutions.
+                                </p>
                                 <p class='text-small'>INSERT TEXT HERE :)</p>
                             </div>
                         </div>

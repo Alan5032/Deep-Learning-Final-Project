@@ -124,7 +124,15 @@
                     <div class='experience card flex-horizontal' data-aos='fade'>
                         <div class='experience content flex-vertical'>
                             <div class='experience description'>
-                                <p class='text-small'>INSERT TEXT HERE :)</p>
+                                <p class='text-small'>
+                                    For evaluation, we combined the segmentation masks for all detected classes within an
+                                    image into a single mask for that image. Then, we compared our generated mask for an
+                                    image to its ground truth mask. We calculated how well our generated masks were by
+                                    calculating the Intersection over Union value between the generated masks and their
+                                    respective ground truth masks. An Intersection over Union value is the amount of
+                                    intersecting area between the two masks divided by the union of the two masks’ area.
+                                    Typically, having an IoU value greater than 0.5 is considered good.
+                                </p>
                             </div>
                         </div>
                     </div>

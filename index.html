@@ -84,7 +84,23 @@
                     <div class='experience card flex-horizontal' data-aos='fade'>
                         <div class='experience content flex-vertical'>
                             <div class='experience description'>
-                                <p class='text-small'>INSERT TEXT HERE :)</p>
+                                <p class='text-small'>
+                                    Current state of the art object segmentation methods involve training a deep neural
+                                    network on a segmentation dataset. DeconvNet in particular appends deconvolutional
+                                    layers after a convolutional neural network that aim to reverse the convolutions
+                                    to obtain the input pixels that contributed to a class. However, Simonyan, et. al.
+                                    in their paper “Deep inside Convolutional Networks: Visualising Image Classification
+                                    Models and Saliency Maps” proposed a method for doing this same computation with only a
+                                    pre-trained classification model and no additional training for segmentation. They
+                                    additionally proved that their method is equivalent to deconvolutions except when
+                                    dealing with a ReLU layer. They use the gradient of a class probability with respect
+                                    to an input pixel as a proxy for how important the pixel is for identifying that class,
+                                    creating a saliency map, which can then be converted into a segmentation mask.
+                                    A second method, guided backpropagation, tries to improve upon Simonyan, et. al.’s work.
+                                    We replicate Simonyan, et. al.’s method and compare it in detail to guided backpropagation
+                                    on the COCO segmentation challenge. We were able to achieve high IOU compared to ground
+                                    truth masks on images with one large object, but lower IOU on images with many or small objects.
+                                </p>
                             </div>
                         </div>
                     </div>

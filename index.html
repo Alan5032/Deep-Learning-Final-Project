@@ -66,7 +66,13 @@
                     <div class='experience card flex-horizontal' data-aos='fade'>
                         <div class='experience content flex-vertical'>
                             <div class='experience description'>
-                                <p class='text-small'>INSERT TEXT HERE :)</p>
+                                <p class='text-small'>
+                                    We aim to solve the problem of object segmentation, where the input is an image and
+                                    class label such as “cat” and the output is a mask where objects of that class are
+                                    present in the image. However, we want to only use a pre-trained classification
+                                    model with no additional training for segmentation, by checking which pixels of the
+                                    image were used by the model to classify it as a particular label.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -127,7 +133,7 @@
                             <p class='title-small'>Truth Mask</p>
                         </div>
                         <div class='project description'>
-                            <p class='text-small'>These images are the raw images overlayed with the ground truth segmentation masks.</p>
+                            <p class='text-small'>These images are the raw images overlaid with the ground truth segmentation masks.</p>
                         </div>
                     </div>
                     <div class='project card flex-vertical' data-aos='fade'>
@@ -135,7 +141,7 @@
                             <p class='title-small'>Generated Mask</p>
                         </div>
                         <div class='project description'>
-                            <p class='text-small'>These images are the raw images overlayed with the segmentation masks that we generate. These images are labeled with their Intersection over Union (IoU) values, which are calculated in comparison to their respective ground truth masks.</p>
+                            <p class='text-small'>These images are the raw images overlaid with the segmentation masks that we generate. These images are labeled with their Intersection over Union (IoU) values, which are calculated in comparison to their respective ground truth masks.</p>
                         </div>
                     </div>
                 </div>
